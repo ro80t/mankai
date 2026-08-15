@@ -1,5 +1,10 @@
 import { Configuration, DefaultApi } from "./openapi/ai-engine";
 import type {
+  ChatCompletionRequestAssistantMessage,
+  ChatCompletionRequestDeveloperMessage,
+  ChatCompletionRequestSystemMessage,
+  ChatCompletionRequestToolMessage,
+  ChatCompletionRequestUserMessage,
   CreateChatCompletionRequest,
   CreateEmbeddingsRequest,
   CreateMessageRequest,
@@ -29,6 +34,25 @@ export interface AiEngineOptions {
 export type UnspecifiedJsonResponse = Record<string, unknown>;
 
 /**
+ * A single message in a {@link createChatCompletion} request.
+ *
+ * The spec declares `messages` items via `anyOf`, which openapi-generator's
+ * typescript-fetch template collapses into the shape of the last variant only
+ * (`ChatCompletionRequestToolMessage`). This union restores the real set of
+ * message types so callers can actually type a user/system/assistant message.
+ */
+export type ChatCompletionRequestMessage =
+  | ChatCompletionRequestDeveloperMessage
+  | ChatCompletionRequestSystemMessage
+  | ChatCompletionRequestUserMessage
+  | ChatCompletionRequestAssistantMessage
+  | ChatCompletionRequestToolMessage;
+
+export type CreateChatCompletionParams = Omit<CreateChatCompletionRequest, "messages"> & {
+  messages: ChatCompletionRequestMessage[];
+};
+
+/**
  * User-facing client for the Sakura AI Engine Inference API.
  *
  * Thin wrapper around the generated {@link DefaultApi} that flattens the
@@ -49,11 +73,13 @@ export class AiEngine {
 
   /** Create a chat completion (OpenAI Chat Completions compatible). */
   async createChatCompletion(
-    request: CreateChatCompletionRequest,
+    request: CreateChatCompletionParams,
     initOverrides?: RequestInit,
   ): Promise<UnspecifiedJsonResponse> {
     const response = await this.api.createChatCompletionRaw(
-      { createChatCompletionRequest: request },
+      // `messages` is deliberately re-typed via `CreateChatCompletionParams` (see its
+      // doc comment); the underlying generated type is too narrow to accept it.
+      { createChatCompletionRequest: request as unknown as CreateChatCompletionRequest },
       initOverrides,
     );
     return response.raw.json();
