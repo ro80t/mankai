@@ -96,6 +96,13 @@ bun run version         # bump versions and update changelogs
 bun run release         # build and publish to npm
 ```
 
+Releases are automated by [`.github/workflows/release.yml`](.github/workflows/release.yml) via [`changesets/action`](https://github.com/changesets/action):
+
+1. Merging a PR with changesets into `main` makes the workflow open/update a "Version Packages" PR.
+2. Merging that PR triggers the workflow again, which builds and publishes to npm.
+
+Publishing uses npm's [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC) instead of a long-lived `NPM_TOKEN`. This requires a one-time setup on npmjs.com: on the package's **Settings → Trusted Publisher**, add a GitHub Actions publisher pointing at this repository, workflow file `release.yml`, and (if used) the environment name.
+
 ## License
 
 MIT
