@@ -1,1 +1,1 @@
-export class Mankai {}
+export * from "./ai-engine";
