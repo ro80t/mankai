@@ -8,5 +8,5 @@ export default defineConfig({
   singleQuote: false,
   trailingComma: "all",
   sortImports: true,
-  ignorePatterns: ["dist/**"],
+  ignorePatterns: ["dist/**", "src/openapi/**"],
 });

@@ -9,5 +9,5 @@ export default defineConfig({
   env: {
     builtin: true,
   },
-  ignorePatterns: ["dist/**"],
+  ignorePatterns: ["dist/**", "src/openapi/**"],
 });
