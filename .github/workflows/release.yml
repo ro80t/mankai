@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  pull_request:
   push:
     branches: [main]
 
@@ -37,6 +38,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Create release pull request or publish to npm
+        if: github.event_name == 'push'
         uses: changesets/action@v1
         with:
           publish: bun run release
