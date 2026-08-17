@@ -13,6 +13,8 @@ pnpm add mankai
 
 ## Usage
 
+See [`examples/`](examples) for runnable scripts covering every endpoint.
+
 ```ts
 import { AiEngine } from "mankai";
 
