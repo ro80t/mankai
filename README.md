@@ -13,8 +13,6 @@ pnpm add mankai
 
 ## Usage
 
-See [`examples/`](examples) for runnable scripts covering every endpoint.
-
 ```ts
 import { AiEngine } from "mankai";
 
@@ -69,6 +67,20 @@ By default requests go to `https://api.ai.sakura.ad.jp`. Pass `basePath` to over
 ```ts
 new AiEngine({ apiKey: "...", basePath: "https://example.com" });
 ```
+
+## Examples
+
+Runnable examples for every endpoint live in [`examples/`](examples):
+
+- [`chat-completion.ts`](examples/chat-completion.ts) — Chat Completions
+- [`embeddings.ts`](examples/embeddings.ts) — Embeddings
+- [`message.ts`](examples/message.ts) — Messages (Anthropic compatible)
+- [`response.ts`](examples/response.ts) — Responses (OpenAI compatible)
+- [`transcription.ts`](examples/transcription.ts) — Speech-to-text
+- [`speech.ts`](examples/speech.ts) — Text-to-speech
+- [`tts.ts`](examples/tts.ts) — VOICEVOX-compatible TTS
+
+See [`examples/README.md`](examples/README.md) for how to run them.
 
 ## Development
 
