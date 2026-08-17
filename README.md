@@ -6,6 +6,9 @@ A TypeScript client for the [Sakura AI Engine Inference API](https://manual.saku
 
 ```sh
 bun add mankai
+npm install mankai
+yarn add mankai
+pnpm add mankai
 ```
 
 ## Usage
