@@ -37,7 +37,7 @@
     "@changesets/cli": "3.0.0",
     "@openapitools/openapi-generator-cli": "^2.40.1",
     "@types/bun": "latest",
-    "oxfmt": "0.63.0",
+    "oxfmt": "0.64.0",
     "oxlint": "1.78.0",
     "tsdown": "0.22.14"
   },
