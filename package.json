@@ -38,7 +38,7 @@
     "@openapitools/openapi-generator-cli": "^2.40.1",
     "@types/bun": "latest",
     "oxfmt": "0.63.0",
-    "oxlint": "1.78.0",
+    "oxlint": "1.79.0",
     "tsdown": "0.22.14"
   },
   "peerDependencies": {
