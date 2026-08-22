@@ -34,7 +34,7 @@
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
-    "@changesets/cli": "3.0.0",
+    "@changesets/cli": "3.0.1",
     "@openapitools/openapi-generator-cli": "^2.40.1",
     "@types/bun": "latest",
     "oxfmt": "0.63.0",
