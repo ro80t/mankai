@@ -16,6 +16,10 @@ const specs: OpenApiSpec[] = [
     name: "object-storage",
     url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/objectstorage-api.yaml",
   },
+  {
+    name: "iam",
+    url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/iam-api.yaml",
+  },
 ];
 
 for (const spec of specs) {

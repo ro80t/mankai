@@ -23,3 +23,9 @@ SAKURA_AI_ENGINE_API_KEY=... bun run examples/tts.ts
 ```sh
 SAKURA_OBJECT_STORAGE_ACCESS_TOKEN=... SAKURA_OBJECT_STORAGE_ACCESS_TOKEN_SECRET=... bun run examples/object-storage.ts
 ```
+
+## IAM
+
+```sh
+SAKURA_IAM_ACCESS_TOKEN=... bun run examples/iam.ts
+```
