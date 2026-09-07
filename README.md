@@ -5,6 +5,7 @@ TypeScript clients for Sakura Internet cloud APIs, generated from their publishe
 - [`AiEngine`](#ai-engine) — [Sakura AI Engine Inference API](https://manual.sakura.ad.jp/cloud/ai-engine/02-howto.html)
 - [`ObjectStorage`](#object-storage) — [Sakura Object Storage API](https://manual.sakura.ad.jp/cloud/objectstorage/api.html)
 - [`Iam`](#iam) — Sakura Cloud IAM API
+- [`SimpleMq`](#simplemq) — SimpleMQ API
 
 ## Installation
 
@@ -108,6 +109,17 @@ const { items: users } = await client.users.listUsers({});
 const { items: projects } = await client.projects.listProjects({});
 ```
 
+### SimpleMQ
+
+```ts
+import { SimpleMq } from "mankai";
+
+const client = new SimpleMq({ apiKey: process.env.SAKURA_SIMPLEMQ_API_KEY! });
+
+await client.sendMessage({ queueName: "your-queue", sendRequest: { content: "Hello!" } });
+const received = await client.receiveMessage({ queueName: "your-queue" });
+```
+
 ## Examples
 
 Runnable examples for every client live in [`examples/`](examples):
@@ -121,6 +133,7 @@ Runnable examples for every client live in [`examples/`](examples):
 - [`tts.ts`](examples/tts.ts) — VOICEVOX-compatible TTS
 - [`object-storage.ts`](examples/object-storage.ts) — Object Storage
 - [`iam.ts`](examples/iam.ts) — IAM
+- [`simple-mq.ts`](examples/simple-mq.ts) — SimpleMQ
 
 See [`examples/README.md`](examples/README.md) for how to run them.
 
@@ -137,7 +150,7 @@ bun run typecheck    # type-check with tsc
 
 ### Regenerating the API client
 
-`src/openapi/*` is generated from upstream OpenAPI specs via [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) and is checked into the repository. `src/ai-engine.ts`, `src/object-storage.ts`, and `src/iam.ts` are hand-written, user-friendly wrappers on top of it and are not regenerated.
+`src/openapi/*` is generated from upstream OpenAPI specs via [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) and is checked into the repository. `src/ai-engine.ts`, `src/object-storage.ts`, `src/iam.ts`, and `src/simple-mq.ts` are hand-written, user-friendly wrappers on top of it and are not regenerated.
 
 ```sh
 bun run generate:openapi

@@ -20,6 +20,10 @@ const specs: OpenApiSpec[] = [
     name: "iam",
     url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/iam-api.yaml",
   },
+  {
+    name: "simple-mq",
+    url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/simplemq-api.yaml",
+  },
 ];
 
 for (const spec of specs) {

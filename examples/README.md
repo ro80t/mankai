@@ -29,3 +29,9 @@ SAKURA_OBJECT_STORAGE_ACCESS_TOKEN=... SAKURA_OBJECT_STORAGE_ACCESS_TOKEN_SECRET
 ```sh
 SAKURA_IAM_ACCESS_TOKEN=... bun run examples/iam.ts
 ```
+
+## SimpleMQ
+
+```sh
+SAKURA_SIMPLEMQ_API_KEY=... bun run examples/simple-mq.ts <queue-name>
+```
