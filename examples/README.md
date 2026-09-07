@@ -35,3 +35,9 @@ SAKURA_IAM_ACCESS_TOKEN=... bun run examples/iam.ts
 ```sh
 SAKURA_SIMPLEMQ_API_KEY=... bun run examples/simple-mq.ts <queue-name>
 ```
+
+## Simple Notification
+
+```sh
+SAKURA_ACCESS_TOKEN=... SAKURA_ACCESS_TOKEN_SECRET=... bun run examples/simple-notification.ts
+```

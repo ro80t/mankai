@@ -24,6 +24,10 @@ const specs: OpenApiSpec[] = [
     name: "simple-mq",
     url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/simplemq-api.yaml",
   },
+  {
+    name: "simple-notification",
+    url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/simple-notification-api.yaml",
+  },
 ];
 
 for (const spec of specs) {

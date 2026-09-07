@@ -6,6 +6,7 @@ TypeScript clients for Sakura Internet cloud APIs, generated from their publishe
 - [`ObjectStorage`](#object-storage) — [Sakura Object Storage API](https://manual.sakura.ad.jp/cloud/objectstorage/api.html)
 - [`Iam`](#iam) — Sakura Cloud IAM API
 - [`SimpleMq`](#simplemq) — SimpleMQ API
+- [`SimpleNotification`](#simple-notification) — Simple Notification (シンプル通知) API
 
 ## Installation
 
@@ -120,6 +121,19 @@ await client.sendMessage({ queueName: "your-queue", sendRequest: { content: "Hel
 const received = await client.receiveMessage({ queueName: "your-queue" });
 ```
 
+### Simple Notification
+
+```ts
+import { SimpleNotification } from "mankai";
+
+const client = new SimpleNotification({
+  accessToken: process.env.SAKURA_ACCESS_TOKEN!,
+  accessTokenSecret: process.env.SAKURA_ACCESS_TOKEN_SECRET!,
+});
+
+const destinations = await client.listCommonServiceItems();
+```
+
 ## Examples
 
 Runnable examples for every client live in [`examples/`](examples):
@@ -134,6 +148,7 @@ Runnable examples for every client live in [`examples/`](examples):
 - [`object-storage.ts`](examples/object-storage.ts) — Object Storage
 - [`iam.ts`](examples/iam.ts) — IAM
 - [`simple-mq.ts`](examples/simple-mq.ts) — SimpleMQ
+- [`simple-notification.ts`](examples/simple-notification.ts) — Simple Notification
 
 See [`examples/README.md`](examples/README.md) for how to run them.
 
@@ -150,7 +165,7 @@ bun run typecheck    # type-check with tsc
 
 ### Regenerating the API client
 
-`src/openapi/*` is generated from upstream OpenAPI specs via [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) and is checked into the repository. `src/ai-engine.ts`, `src/object-storage.ts`, `src/iam.ts`, and `src/simple-mq.ts` are hand-written, user-friendly wrappers on top of it and are not regenerated.
+`src/openapi/*` is generated from upstream OpenAPI specs via [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) and is checked into the repository. `src/ai-engine.ts`, `src/object-storage.ts`, `src/iam.ts`, `src/simple-mq.ts`, and `src/simple-notification.ts` are hand-written, user-friendly wrappers on top of it and are not regenerated.
 
 ```sh
 bun run generate:openapi
