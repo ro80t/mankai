@@ -1,6 +1,9 @@
 # mankai
 
-A TypeScript client for the [Sakura AI Engine Inference API](https://manual.sakura.ad.jp/cloud/ai-engine/02-howto.html).
+TypeScript clients for Sakura Internet cloud APIs, generated from their published OpenAPI specs:
+
+- [`AiEngine`](#ai-engine) — [Sakura AI Engine Inference API](https://manual.sakura.ad.jp/cloud/ai-engine/02-howto.html)
+- [`ObjectStorage`](#object-storage) — [Sakura Object Storage API](https://manual.sakura.ad.jp/cloud/objectstorage/api.html)
 
 ## Installation
 
@@ -12,6 +15,8 @@ pnpm add mankai
 ```
 
 ## Usage
+
+### AI Engine
 
 ```ts
 import { AiEngine } from "mankai";
@@ -68,9 +73,28 @@ By default requests go to `https://api.ai.sakura.ad.jp`. Pass `basePath` to over
 new AiEngine({ apiKey: "...", basePath: "https://example.com" });
 ```
 
+### Object Storage
+
+The Object Storage API is split across two base URLs: a "federation" endpoint for site discovery and
+bucket create/delete, and a per-site endpoint for everything else (account, permissions, bucket
+details). `ObjectStorage` keeps both configured internally and routes each method appropriately.
+
+```ts
+import { ObjectStorage } from "mankai";
+
+const client = new ObjectStorage({
+  accessToken: process.env.SAKURA_OBJECT_STORAGE_ACCESS_TOKEN!,
+  accessTokenSecret: process.env.SAKURA_OBJECT_STORAGE_ACCESS_TOKEN_SECRET!,
+  site: "isk01", // optional, defaults to "isk01"; discover sites via listClusters()
+});
+
+const { data: clusters } = await client.listClusters();
+const { data: buckets } = await client.listBuckets();
+```
+
 ## Examples
 
-Runnable examples for every endpoint live in [`examples/`](examples):
+Runnable examples for every client live in [`examples/`](examples):
 
 - [`chat-completion.ts`](examples/chat-completion.ts) — Chat Completions
 - [`embeddings.ts`](examples/embeddings.ts) — Embeddings
@@ -79,6 +103,7 @@ Runnable examples for every endpoint live in [`examples/`](examples):
 - [`transcription.ts`](examples/transcription.ts) — Speech-to-text
 - [`speech.ts`](examples/speech.ts) — Text-to-speech
 - [`tts.ts`](examples/tts.ts) — VOICEVOX-compatible TTS
+- [`object-storage.ts`](examples/object-storage.ts) — Object Storage
 
 See [`examples/README.md`](examples/README.md) for how to run them.
 
@@ -95,7 +120,7 @@ bun run typecheck    # type-check with tsc
 
 ### Regenerating the API client
 
-`src/openapi/*` is generated from upstream OpenAPI specs via [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) and is checked into the repository. `src/ai-engine.ts` is a hand-written, user-friendly wrapper on top of it and is not regenerated.
+`src/openapi/*` is generated from upstream OpenAPI specs via [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) and is checked into the repository. `src/ai-engine.ts` and `src/object-storage.ts` are hand-written, user-friendly wrappers on top of it and are not regenerated.
 
 ```sh
 bun run generate:openapi

@@ -12,6 +12,10 @@ const specs: OpenApiSpec[] = [
     name: "ai-engine",
     url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/ai-engine-inference-api.yaml",
   },
+  {
+    name: "object-storage",
+    url: "https://manual.sakura.ad.jp/api/cloud/portal/openapis/objectstorage-api.yaml",
+  },
 ];
 
 for (const spec of specs) {

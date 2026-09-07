@@ -1,10 +1,12 @@
 # Examples
 
-Runnable examples of the `AiEngine` client. Each script reads the API key from the
-`SAKURA_AI_ENGINE_API_KEY` environment variable.
+Runnable examples for every client in this package. Each script reads its credentials from
+environment variables.
 
-These examples import from `../src/ai-engine` for convenience when running inside this
-repository. In your own project, install the package and import from `"mankai"` instead.
+These examples import from `../src/...` for convenience when running inside this repository. In
+your own project, install the package and import from `"mankai"` instead.
+
+## AI Engine
 
 ```sh
 SAKURA_AI_ENGINE_API_KEY=... bun run examples/chat-completion.ts
@@ -14,4 +16,10 @@ SAKURA_AI_ENGINE_API_KEY=... bun run examples/response.ts
 SAKURA_AI_ENGINE_API_KEY=... bun run examples/transcription.ts <path-to-audio-file>
 SAKURA_AI_ENGINE_API_KEY=... bun run examples/speech.ts
 SAKURA_AI_ENGINE_API_KEY=... bun run examples/tts.ts
+```
+
+## Object Storage
+
+```sh
+SAKURA_OBJECT_STORAGE_ACCESS_TOKEN=... SAKURA_OBJECT_STORAGE_ACCESS_TOKEN_SECRET=... bun run examples/object-storage.ts
 ```
