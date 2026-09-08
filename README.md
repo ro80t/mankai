@@ -1,5 +1,7 @@
 # mankai
 
+Unofficial: TypeScript clients for Sakura Internet services.
+
 TypeScript clients for Sakura Internet cloud APIs, generated from their published OpenAPI specs:
 
 - [`AiEngine`](#ai-engine) — [Sakura AI Engine Inference API](https://manual.sakura.ad.jp/cloud/ai-engine/02-howto.html)

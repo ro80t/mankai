@@ -1,6 +1,7 @@
 {
   "name": "mankai",
   "version": "0.3.0",
+  "description": "Unofficial: TypeScript clients for Sakura Internet services.",
   "license": "MIT",
   "repository": {
     "type": "git",
