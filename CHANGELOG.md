@@ -1,5 +1,11 @@
 # mankai
 
+## 0.3.1
+
+### Patch Changes
+
+- 0a56ff4: feat: update README and package.json with project description
+
 ## 0.3.0
 
 ### Minor Changes
